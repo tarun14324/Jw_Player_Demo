@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/ChapterVideoFragment">
+
+    <fragment
+        android:id="@+id/ChapterListFragment"
+        android:name="com.example.jwplayerdemo.ui.ChapterListFragment"
+        android:label="@string/chapter_list_label"
+        tools:layout="@layout/fragment_chapter_list">
+
+        <action
+            android:id="@+id/action_ChapterListFragment_to_ChapterDetailFragment"
+            app:destination="@id/ChapterVideoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/ChapterVideoFragment"
+        android:name="com.example.jwplayerdemo.ui.ChapterVideoFragment"
+        android:label="@string/chapter_video_label"
+        tools:layout="@layout/fragment_chapter_detail">
+        <argument
+            android:name="subjectId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <argument
+            android:name="chapterId"
+            app:argType="string"
+            app:nullable="true" />
+
+        <action
+            android:id="@+id/action_ChapterDetailFragment_to_DrmVideoFragment"
+            app:destination="@id/DrmVideoFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/DrmVideoFragment"
+        android:name="com.example.jwplayerdemo.ui.DrmVideoFragment"
+        android:label="@string/drm_video_label"
+        tools:layout="@layout/fragment_drm_video">
+
+        <argument
+            android:name="item"
+            app:argType="com.example.jwplayerdemo.models.VideoContent" />
+    </fragment>
+
+
+</navigation>

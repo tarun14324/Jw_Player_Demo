@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Jw Player Demo</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="chapter_list_label">Chapter List Fragment</string>
+    <string name="chapter_video_label">Chapter Video Fragment</string>
+    <string name="drm_video_label">Drm Video Fragment</string>
+
+
+</resources>
