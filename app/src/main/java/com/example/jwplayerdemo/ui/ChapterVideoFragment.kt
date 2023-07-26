@@ -22,9 +22,8 @@ class ChapterVideoFragment : Fragment() {
     private var _binding: FragmentChapterDetailBinding? = null
     private lateinit var viewModel: ChapterVideoViewModel
     private val chapterVideoAdapter = ChapterVideoAdapter { video ->
-        Log.e("TAG", ": list-$video")
         findNavController().navigate(
-            ChapterVideoFragmentDirections.actionChapterDetailFragmentToDrmVideoFragment(
+            ChapterVideoFragmentDirections.actionChapterVideoFragmentToDrmVideoFragment(
                 VideoContent(
                     chapterName = video.chapterName,
                     chapterId = video.chapterId,
@@ -40,7 +39,8 @@ class ChapterVideoFragment : Fragment() {
                     thumbNailUrl = video.thumbNailUrl,
                     videoId = video.videoId,
                     videoSource = video.videoSource,
-                )
+                    isDrm = video.isDrm
+                ), toolbarTitle = video.contentName
             )
         )
     }

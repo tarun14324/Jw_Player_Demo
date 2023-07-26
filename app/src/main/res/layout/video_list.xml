@@ -1,15 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-
         <variable
             name="item"
-            type="com.example.jwplayerdemo.models.Chapter" />
+            type="com.example.jwplayerdemo.models.VideoContent" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="110dp"
         android:layout_marginStart="5dp"
@@ -22,11 +22,9 @@
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivSubject"
-                android:layout_width="80dp"
-                android:layout_height="90dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="10dp"
-                android:scaleType="fitCenter"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
                 android:src="@mipmap/ic_launcher"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -37,7 +35,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="30dp"
-                android:text="@{item.chapterName}"
+                android:ellipsize="end"
+                android:maxLength="25"
+                android:text="@{item.contentName}"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintLeft_toRightOf="@id/ivSubject"
@@ -48,7 +48,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@{item.subjectName}"
+                android:text="@{item.source}"
                 app:layout_constraintLeft_toLeftOf="@id/tvChapterName"
                 app:layout_constraintTop_toBottomOf="@id/tvChapterName" />
 

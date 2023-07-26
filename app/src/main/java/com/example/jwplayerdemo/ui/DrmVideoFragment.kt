@@ -3,7 +3,6 @@ package com.example.jwplayerdemo.ui
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.Parcel
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.example.jwplayerdemo.databinding.FragmentDrmVideoBinding
 import com.example.jwplayerdemo.models.DrmVideoDetail
-import com.example.jwplayerdemo.util.Util
+import com.example.jwplayerdemo.utils.Util
 import com.example.jwplayerdemo.viewmodel.DrmViewModel
 import com.google.android.exoplayer2.drm.ExoMediaDrm
 import com.jwplayer.pub.api.JWPlayer
@@ -27,8 +26,6 @@ import com.jwplayer.pub.api.license.LicenseUtil
 import com.jwplayer.pub.api.media.drm.MediaDrmCallback
 import com.jwplayer.pub.api.media.playlists.PlaylistItem
 import com.jwplayer.pub.view.JWPlayerView
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.channels.consume
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
@@ -58,6 +55,7 @@ class DrmVideoFragment : Fragment() {
         _binding = FragmentDrmVideoBinding.inflate(inflater, container, false)
         viewModel = ViewModelProvider(this)[DrmViewModel::class.java]
         viewModel.drmData= args.item
+        activity?.actionBar?.title = args.item.contentName
         viewModel.getData()
         mPlayerView = binding.jwplayer
         mPlayer = mPlayerView.getPlayer(this)
@@ -160,12 +158,6 @@ class DrmVideoFragment : Fragment() {
                     isPlayingVideoOnError = false
                 }
             })
-//            addListener(EventType.SEEKED, object : VideoPlayerEvents.OnSeekedListener {
-//                override fun onSeeked(p0: SeekedEvent?) {
-//                    if ((videoPlayer?.getCurrentPositionInMillis() ?: 0L) == 0L) return
-//                    videoInfo.videoPosition = videoPlayer?.getCurrentPositionInMillis() ?: 0
-//                }
-//            })
             addListener(EventType.ERROR, object : VideoPlayerEvents.OnErrorListener {
                 override fun onError(errorEvent: ErrorEvent?) {
                 //    viewModel.sendVideoError(errorEvent!!)

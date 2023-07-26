@@ -1,4 +1,4 @@
-package com.example.jwplayerdemo.util
+package com.example.jwplayerdemo.utils
 
 import java.io.IOException
 import android.util.Patterns

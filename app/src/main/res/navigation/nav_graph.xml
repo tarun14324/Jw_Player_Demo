@@ -1,51 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/ChapterVideoFragment">
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/chapterVideoFragment">
+
 
     <fragment
-        android:id="@+id/ChapterListFragment"
-        android:name="com.example.jwplayerdemo.ui.ChapterListFragment"
-        android:label="@string/chapter_list_label"
-        tools:layout="@layout/fragment_chapter_list">
-
-        <action
-            android:id="@+id/action_ChapterListFragment_to_ChapterDetailFragment"
-            app:destination="@id/ChapterVideoFragment" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/ChapterVideoFragment"
+        android:id="@+id/chapterVideoFragment"
         android:name="com.example.jwplayerdemo.ui.ChapterVideoFragment"
-        android:label="@string/chapter_video_label"
-        tools:layout="@layout/fragment_chapter_detail">
-        <argument
-            android:name="subjectId"
-            app:argType="string"
-            app:nullable="true" />
-
-        <argument
-            android:name="chapterId"
-            app:argType="string"
-            app:nullable="true" />
-
+        android:label="ChapterVideoFragment" >
         <action
-            android:id="@+id/action_ChapterDetailFragment_to_DrmVideoFragment"
-            app:destination="@id/DrmVideoFragment" />
+            android:id="@+id/action_chapterVideoFragment_to_drmVideoFragment"
+            app:destination="@id/drmVideoFragment" />
     </fragment>
-
     <fragment
-        android:id="@+id/DrmVideoFragment"
+        android:id="@+id/drmVideoFragment"
         android:name="com.example.jwplayerdemo.ui.DrmVideoFragment"
-        android:label="@string/drm_video_label"
-        tools:layout="@layout/fragment_drm_video">
+        android:label="DrmVideoFragment">
+
+        <argument
+            android:name="toolbarTitle"
+            android:defaultValue="defaultTitle"
+            app:argType="string" />
 
         <argument
             android:name="item"
             app:argType="com.example.jwplayerdemo.models.VideoContent" />
+
     </fragment>
-
-
 </navigation>

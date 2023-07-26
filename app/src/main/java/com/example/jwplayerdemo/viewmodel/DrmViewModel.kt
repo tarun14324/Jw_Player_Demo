@@ -1,6 +1,5 @@
 package com.example.jwplayerdemo.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.jwplayerdemo.api.RetrofitHelper
@@ -32,7 +31,6 @@ class DrmViewModel : ViewModel() {
                 drmData.jwMediaId!!, deviceOs = "Android",
                 platform = "mobile", securityLevel = drmInfo.securityLevel, digitalOutput = drmInfo.maxHdcpLevel
             )
-            Log.e("TAG", "fetchVideoMetadata: ${drmVideoResponse.body()!!.data}", )
             videoMetaDataEvent.trySend(drmVideoResponse.body()?.data!!)
         } else {
             videoMetaDataEvent.trySend(null)

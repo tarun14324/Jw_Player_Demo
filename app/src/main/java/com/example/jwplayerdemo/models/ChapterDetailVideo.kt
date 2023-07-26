@@ -108,7 +108,7 @@ data class VideoContent(
     var isLocked: Boolean = false,
 
     @SerializedName("is_drm")
-    var isDrm: Boolean = false,
+    var isDrm: Boolean,
 
     @SerializedName("jw_media_id", alternate = ["content_media_id"])
     var jwMediaId: String?
