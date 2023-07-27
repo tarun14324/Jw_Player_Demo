@@ -9,6 +9,7 @@ plugins {
 android {
     namespace 'com.example.jwplayerdemo'
     compileSdk 33
+    archivesBaseName="JW Player"
 
     defaultConfig {
         applicationId "com.example.jwplayerdemo"

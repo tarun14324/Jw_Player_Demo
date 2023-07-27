@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/drmVideoFragment"
         android:name="com.example.jwplayerdemo.ui.DrmVideoFragment"
-        android:label="DrmVideoFragment">
+        android:label="{toolbarTitle}">
 
         <argument
             android:name="toolbarTitle"

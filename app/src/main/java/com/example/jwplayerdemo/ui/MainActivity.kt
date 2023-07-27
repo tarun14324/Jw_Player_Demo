@@ -3,8 +3,10 @@ package com.example.jwplayerdemo.ui
 import android.annotation.SuppressLint
 import android.content.Context
 import android.hardware.usb.UsbManager
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
@@ -30,12 +32,13 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        WindowCompat.setDecorFitsSystemWindows(window, false)
-        window?.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
         super.onCreate(savedInstanceState)
+        // Set the status bar color to transparent
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or
+                View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+        window.statusBarColor = android.graphics.Color.TRANSPARENT
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        checkExternalDeviceConnection()
         setSupportActionBar(binding.toolbar)
 
         appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -45,21 +48,5 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         return navController.navigateUp(appBarConfiguration)
                 || super.onSupportNavigateUp()
-    }
-
-    @SuppressLint("ServiceCast")
-    private fun checkExternalDeviceConnection() {
-        val usbManager = getSystemService(Context.USB_SERVICE) as UsbManager
-        val usbDevices = usbManager.deviceList
-
-        if (usbDevices.isNotEmpty()) {
-            // USB device(s) are connected
-            for (device in usbDevices.values) {
-                Log.d("USB_DEVICES", "USB Device: ${device.deviceName}")
-            }
-        } else {
-            // No USB devices are connected
-            Log.d("USB_DEVICES", "No USB devices connected.")
-        }
     }
 }
